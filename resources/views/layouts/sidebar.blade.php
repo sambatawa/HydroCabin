@@ -1,5 +1,4 @@
-<!-- Sidebar -->
-<div class="flex flex-col h-full">
+<div class="flex flex-col h-full m-0 w-[256px] fixed">
   <div class="flex items-center justify-between px-6 py-4 border-b border-emerald-600">
     <div class="flex items-center space-x-2">
       <i class="fas fa-leaf text-2xl text-emerald-300"></i>
@@ -104,7 +103,6 @@
     padding: 1rem;
     font-size: 1rem;
   }
-  
   .menu-link i {
     font-size: 1.25rem;
   }

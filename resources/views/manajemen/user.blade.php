@@ -5,17 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Manajemen User</title>
-    <!-- Google Fonts - Poppins -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%23059e8a' d='M272 96c-78.6 0-145.1 51.5-167.7 122.5c33.6-17 71.5-26.5 111.7-26.5h88c8.8 0 16 7.2 16 16s-7.2 16-16 16h-88c-16.6 0-32.7 1.9-48.3 5.4c-25.9 5.9-49.9 16.4-71.4 30.7c0 0 0 0 0 0C38.3 298.8 0 364.9 0 440v16c0 13.3 10.7 24 24 24s24-10.7 24-24v-16c0-48.7 20.7-92.5 53.8-123.2C121.6 392.3 190.3 448 272 448l1 0c132.1-.7 239-130.9 239-291.4c0-42.6-7.5-83.1-21.1-119.6c-2.6-6.9-12.7-6.6-16.2-.1C455.9 72.1 418.7 96 376 96L272 96z'/></svg>" />
-    <!-- Apple Touch Icon -->
-    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%23059e8a' d='M272 96c-78.6 0-145.1 51.5-167.7 122.5c33.6-17 71.5-26.5 111.7-26.5h88c8.8 0 16 7.2 16 16s-7.2 16-16 16h-88c-16.6 0-32.7 1.9-48.3 5.4c-25.9 5.9-49.9 16.4-71.4 30.7c0 0 0 0 0 0C38.3 298.8 0 364.9 0 440v16c0 13.3 10.7 24 24 24s24-10.7 24-24v-16c0-48.7 20.7-92.5 53.8-123.2C121.6 392.3 190.3 448 272 448l1 0c132.1-.7 239-130.9 239-291.4c0-42.6-7.5-83.1-21.1-119.6c-2.6-6.9-12.7-6.6-16.2-.1C455.9 72.1 418.7 96 376 96L272 96z'/></svg>" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
@@ -38,7 +31,6 @@
             .sidebar.active {
                 left: 0;
             }
-            
             .mobile-overlay {
                 display: none;
                 position: fixed;
@@ -68,7 +60,6 @@
                 height: 250px !important;
             }
         }
-
         .cards {
             max-width: 1200px;
             margin: 0 auto;
@@ -77,7 +68,6 @@
             grid-gap: 1rem;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         }
-        
         .mobile-menu-btn {
             display: none;
             position: fixed;
@@ -89,7 +79,6 @@
             border-radius: 0.5rem;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-
         .card {
             background: white;
             padding: 1.5rem;
@@ -97,22 +86,19 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             transition: all 0.3s ease;
         }
-
         .card:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
-
         .plant-bg {
             position: absolute;
             width: 100%;
             height: 100%;
             background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 20C30 20 20 40 20 50C20 60 30 80 50 80C70 80 80 60 80 50C80 40 70 20 50 20ZM50 30C60 30 65 40 65 50C65 60 60 70 50 70C40 70 35 60 35 50C35 40 40 30 50 30Z' fill='%23059e8a' fill-opacity='0.1'/%3E%3C/svg%3E");
             background-size: 100px 100px;
-            animation: plantFloat 20s linear infinite;
+            animation: Float 20s linear infinite;
         }
-
-        @keyframes plantFloat {
+        @keyframes Float {
             0% {
                 background-position: 0 0;
             }
@@ -120,7 +106,6 @@
                 background-position: 100px 100px;
             }
         }
-
         .table-container {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -129,17 +114,14 @@
             border: 1px solid rgba(255, 255, 255, 0.18);
             transition: all 0.3s ease;
         }
-
         .table-responsive {
             overflow-x: auto;
         }
-
         table {
             width: 100%;
             border-collapse: separate;
             border-spacing: 0;
         }
-
         th {
             background: #f3f4f6;
             color: #374151;
@@ -150,21 +132,17 @@
             text-align: left;
             font-size: 0.75rem;
         }
-
         td {
             padding: 1rem;
             color: #1f2937;
             font-size: 0.875rem;
         }
-
         tr {
             transition: background-color 0.2s ease;
         }
-
         tbody tr:hover {
             background-color: #f9fafb;
         }
-
         .btn {
             display: inline-flex;
             align-items: center;
@@ -173,30 +151,25 @@
             font-weight: 500;
             transition: all 0.2s ease;
         }
-
         .btn-primary {
             background-color: #059669;
             color: white;
         }
-
         .btn-primary:hover {
             background-color: #047857;
             transform: translateY(-1px);
         }
-
         .toggle-switch {
             position: relative;
             display: inline-block;
             width: 50px;
             height: 24px;
         }
-
         .toggle-switch input {
             opacity: 0;
             width: 0;
             height: 0;
         }
-
         .slider {
             position: absolute;
             cursor: pointer;
@@ -208,7 +181,6 @@
             transition: .4s;
             border-radius: 24px;
         }
-
         .slider:before {
             position: absolute;
             content: "";
@@ -220,30 +192,24 @@
             transition: .4s;
             border-radius: 50%;
         }
-
         input:checked + .slider {
             background-color: #059669;
         }
-
         input:checked + .slider:before {
             transform: translateX(26px);
         }
-
         .modal {
             transition: opacity 0.3s ease;
         }
-
         .modal-content {
             transform: scale(0.95);
             opacity: 0;
             transition: all 0.3s ease;
         }
-
         .modal.active .modal-content {
             transform: scale(1);
             opacity: 1;
         }
-
         .form-input {
             width: 100%;
             padding: 0.5rem 0.75rem;
@@ -251,13 +217,11 @@
             border-radius: 0.5rem;
             transition: all 0.2s ease;
         }
-
         .form-input:focus {
             outline: none;
             border-color: #059669;
             box-shadow: 0 0 0 2px rgba(5, 150, 105, 0.1);
         }
-
         .form-label {
             display: block;
             font-size: 0.875rem;
@@ -265,7 +229,6 @@
             color: #374151;
             margin-bottom: 0.5rem;
         }
-
         .password-strength {
             height: 4px;
             background: #e5e7eb;
@@ -273,7 +236,6 @@
             overflow: hidden;
             margin-top: 0.5rem;
         }
-
         #password-strength-bar {
             height: 100%;
             width: 0%;
@@ -281,7 +243,7 @@
         }
     </style>
 </head>
-<body class="flex bg-[#AFE1AF] font-sans min-h-screen relative">
+<body class="flex bg-[#AFE1AF] font-sans min-h-screen relative ">
     <button class="mobile-menu-btn" onclick="toggleSidebar()">
         <i class="fas fa-bars text-xl text-gray-600"></i>
     </button>
@@ -290,10 +252,10 @@
         @include('layouts.sidebar')
     </aside>
 
-    <main class="flex-1 p-6 overflow-y-auto">
-        <div class="container mx-auto">
+    <main class="flex-1 p-6 py-[50px] mx-[50px]">
+        <div class="container ">
             <div class="flex justify-between items-center mb-6">
-                <h2 class="text-2xl font-bold text-gray-800">Manajemen User</h2>
+                <h2 class="text-2xl font-bold text-emerald-800">Manajemen User</h2>
                 <button onclick="openAddUserModal()" class="btn btn-primary text-sm">
                     <i class="fas fa-plus mr-2"></i>Tambah User
                 </button>
@@ -320,8 +282,8 @@
         </div>
     </main>
 
-    <div id="addUserModal" class="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center hidden z-50">
-        <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md mx-4">
+    <div id="addUserModal" class="fixed inset-0 w-[100vw] h-[100vh] bg-black bg-opacity-40 items-center justify-center hidden flex z-50">
+        <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md mx-4 flex-col flex">
             <h3 class="text-xl font-semibold mb-6">Tambah User Baru</h3>
             <form id="addUserForm">
                 <div class="space-y-4">
@@ -358,7 +320,7 @@
         </div>
     </div>
 
-    <div id="editUserModal" class="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center hidden z-50">
+    <div id="editUserModal" class="fixed inset-0 bg-black bg-opacity-40 items-center justify-center hidden z-50">
         <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md mx-4">
             <h3 class="text-xl font-semibold mb-6">Edit User</h3>
             <form id="editUserForm">

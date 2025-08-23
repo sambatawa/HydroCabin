@@ -4,11 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dashboard</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%23059e8a' d='M272 96c-78.6 0-145.1 51.5-167.7 122.5c33.6-17 71.5-26.5 111.7-26.5h88c8.8 0 16 7.2 16 16s-7.2 16-16 16h-88c-16.6 0-32.7 1.9-48.3 5.4c-25.9 5.9-49.9 16.4-71.4 30.7c0 0 0 0 0 0C38.3 298.8 0 364.9 0 440v16c0 13.3 10.7 24 24 24s24-10.7 24-24v-16c0-48.7 20.7-92.5 53.8-123.2C121.6 392.3 190.3 448 272 448l1 0c132.1-.7 239-130.9 239-291.4c0-42.6-7.5-83.1-21.1-119.6c-2.6-6.9-12.7-6.6-16.2-.1C455.9 72.1 418.7 96 376 96L272 96z'/></svg>" />
-  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%23059e8a' d='M272 96c-78.6 0-145.1 51.5-167.7 122.5c33.6-17 71.5-26.5 111.7-26.5h88c8.8 0 16 7.2 16 16s-7.2 16-16 16h-88c-16.6 0-32.7 1.9-48.3 5.4c-25.9 5.9-49.9 16.4-71.4 30.7c0 0 0 0 0 0C38.3 298.8 0 364.9 0 440v16c0 13.3 10.7 24 24 24s24-10.7 24-24v-16c0-48.7 20.7-92.5 53.8-123.2C121.6 392.3 190.3 448 272 448l1 0c132.1-.7 239-130.9 239-291.4c0-42.6-7.5-83.1-21.1-119.6c-2.6-6.9-12.7-6.6-16.2-.1C455.9 72.1 418.7 96 376 96L272 96z'/></svg>" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -25,10 +22,11 @@
         left: -100%;
         top: 0;
         bottom: 0;
-        z-index: 40;
+        z-index: 100;
         transition: 0.3s;
         width: 80%;
         max-width: 300px;
+        height: 100vh;
       }
       .sidebar.active {
         left: 0;
@@ -182,30 +180,25 @@
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
-
     .status-high {
       background-color: #FEE2E2;
       color: #ef4444;
       border: 1px solid #ef4444;
     }
-
     .status-low {
       background-color: #FEF3C7;
       color: #f59e0b;
       border: 1px solid #f59e0b;
     }
-
     .status-normal {
       background-color: rgba(5, 158, 138, 0.1);
       color: #059e8a;
     }
-    /* Gaya Header */
     .header-underline {
       border-bottom: 3px solid #059e8a;
       padding-bottom: 0.5rem;
       margin-bottom: 1.5rem;
     }
-    /* Notifikasi Peringatan */
     .alert-notification {
       position: fixed;
       top: 20px;
@@ -213,42 +206,33 @@
       z-index: 1000;
       max-width: 400px;
     }
-    /* Animasi */
     @keyframes pulse {
       0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
       70% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
       100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
     }
-
-    /* Responsive styles */
     @media (max-width: 768px) {
       .main-content {
         margin-left: 0;
         padding: 1rem;
       }
-      
       .card {
         min-height: 160px;
         padding: 1.25rem;
       }
-      
       .card-icon {
         font-size: 1.5rem;
         width: 40px;
         height: 40px;
       }
-      
       .card-value {
         font-size: 2rem;
       }
-      
       .card-status {
         font-size: 0.75rem;
         padding: 0.375rem 0.75rem;
       }
     }
-
-    /* Grid layout improvements */
     .cards {
         max-width: 1200px;
         margin: 0 auto 1.5rem auto;
@@ -257,8 +241,6 @@
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         padding: 0.5rem;
     }
-
-    /* Animation for warning status */
     @keyframes pulse {
         0% {
             box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4);
@@ -270,44 +252,32 @@
             box-shadow: 0 0 0 0 rgba(245, 158, 11, 0);
         }
     }
-
     .status-warning .status-indicator {
         animation: pulse 2s infinite;
     }
   </style>
 </head>
 <body class="flex bg-[#AFE1AF] font-sans min-h-screen relative">
-  <!-- Mobile Menu -->
-  <button class="mobile-menu-btn" onclick="toggleSidebar()">
-    <i class="fas fa-bars text-xl"></i>
-  </button>
+  <button class="mobile-menu-btn" onclick="toggleSidebar()"><i class="fas fa-bars text-xl"></i></button>
   <div class="mobile-overlay" onclick="toggleSidebar()"></div>
-
-  <!-- Sidebar -->
-  <aside class="sidebar bg-gradient-to-b from-emerald-800 to-brown-200 text-white w-64 min-h-screen">
+  <aside class="sidebar bg-gradient-to-b from-emerald-800 to-brown-200 text-white w-64 h-screen">
     @include('layouts.sidebar')
   </aside>
-
-  <!-- Konten Utama -->
-  <main class="flex-1 p-6 overflow-y-auto">
+  <main class="flex-1 p-6 py-[50px] mx-[50px]">
     <div id="alertNotification" class="alert-notification hidden">
       <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded shadow-lg">
         <div class="flex justify-between items-start">
-          <div>
-            <strong class="font-bold">Peringatan Sensor!</strong>
-            <div id="alertMessage" class="mt-2"></div>
-          </div>
+          <strong class="font-bold">Peringatan Sensor!</strong>
+          <div id="alertMessage" class="mt-2"></div>
           <button onclick="dismissAlert()" class="ml-4 text-red-700 hover:text-red-900">
             <i class="fas fa-times"></i>
           </button>
         </div>
       </div>
     </div>
-
     <div class="flex justify-between items-center mb-6">
-      <h2 class="text-2xl md:text-2xl font-bold text-gray-800">Dashboard Monitoring</h2>
+      <h2 class="text-2xl md:text-2xl font-bold text-emerald-800">Dashboard Monitoring</h2>
     </div>
-    <!-- card tampilan -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
       <div id="tempCard" class="card card-normal">
         <div class="card-header">
@@ -346,8 +316,6 @@
       </div>
       </div>
     </div>
-
-    <!-- Grafik Individual -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
       <div class="bg-white rounded-lg shadow-lg p-4">
         <h2 class="text-lg font-semibold text-gray-800 mb-4">Grafik Suhu</h2>
@@ -368,8 +336,6 @@
         </div>
       </div>
     </div>
-
-    <!-- Grafik Gabungan -->
     <div class="grid grid-cols-1 gap-4 mb-6">
       <div class="bg-white rounded-lg shadow-lg p-4">
         <h2 class="text-lg font-semibold text-gray-800 mb-4">Grafik Sensor</h2>
@@ -380,7 +346,6 @@
     </div>
 
   <script>
-    //ngegerakin sidebar
     function toggleSidebar() {
       const sidebar = document.querySelector('.sidebar');
       const overlay = document.querySelector('.mobile-overlay');
@@ -399,8 +364,6 @@
         overlay.classList.remove('active');
       }
     });
-
-    //chartnya disesuaikan
     Chart.defaults.font.size = window.innerWidth < 768 ? 10 : 12;
     Chart.defaults.responsive = true;
     Chart.defaults.maintainAspectRatio = false;
@@ -427,8 +390,8 @@
     firebase.initializeApp(firebaseConfig);
       }
       const database = firebase.database();
-      const readingsRef = database.ref('SensorData/ZnZH95MCGvdfxPVwgfoRo3TdBnb2/readings');
-      const settingsRef = database.ref('SensorData/ZnZH95MCGvdfxPVwgfoRo3TdBnb2/settings');
+      const readingsRef = database.ref('SensorData/0iY5iE17GQOxdQ524YFCEWRthwe2/readings');
+      const settingsRef = database.ref('SensorData/0iY5iE17GQOxdQ524YFCEWRthwe2/settings');
 
       const tempEl = document.getElementById('temp');
       const humEl = document.getElementById('hum');
@@ -441,8 +404,6 @@
       const presStatus = document.getElementById('presStatus');
       const alertNotification = document.getElementById('alertNotification');
       const alertMessage = document.getElementById('alertMessage');
-
-      // Variabel untuk chart
       let tempChart, humChart, pressChart, sensorChart;
       function createChart(canvasId, label, borderColor, backgroundColor) {
         const ctx = document.getElementById(canvasId).getContext('2d');
@@ -491,8 +452,6 @@
           }
         });
       }
-
-      //update chart
       function updateChart(chart, labels, data) {
         if (!chart) return;
         
@@ -500,14 +459,12 @@
         chart.data.datasets[0].data = data;
         chart.update();
       }
-
       let telegramConfig = {
         botToken: '',
         chatId: '',
         enabled: false
       };
       let alertsEnabled = true;
-
       function loadSettings() {
         console.log('Loading settings...');
         settingsRef.once('value').then(snapshot => {
@@ -518,12 +475,9 @@
               currentThresholds = settings.thresholds;
               console.log('Loaded thresholds:', currentThresholds);
             }
-            
-            // Alert settings
             alertsEnabled = settings.alertsEnabled !== undefined ? settings.alertsEnabled : true;
             console.log('Alerts enabled:', alertsEnabled);
-            
-            // Telegram settings
+  
             if (settings.telegramConfig) {
               telegramConfig = {
                 botToken: settings.telegramConfig.botToken || '',
@@ -548,8 +502,6 @@
           isInitialLoad = false;
         });
       }
-
-    // nilai batasan normal
     let currentThresholds = {
       temperature: { min: 18, max: 30 },
       humidity: { min: 45, max: 60 },
@@ -557,13 +509,12 @@
     };
 
     let lastAlertTime = 0;
-    let alertCooldown = 10000; // diem dulu 10 detik
+    let alertCooldown = 10000;
     let isInitialLoad = true;
     let lastSensorValues = {};
     function checkSensorConditions(sensorData) {
       if (!sensorData) return [];
       const alerts = [];
-      //suhu
       if (sensorData.temperature !== undefined) {
         if (sensorData.temperature < currentThresholds.temperature.min) {
           alerts.push({
@@ -581,8 +532,6 @@
           });
         }
       }
-      
-      //kelembaban
       if (sensorData.humidity !== undefined) {
         if (sensorData.humidity < currentThresholds.humidity.min) {
           alerts.push({
@@ -600,8 +549,6 @@
           });
         }
       }
-      
-      // tekanan
       if (sensorData.pressure !== undefined) {
         if (sensorData.pressure < currentThresholds.pressure.min) {
           alerts.push({
@@ -619,19 +566,14 @@
           });
         }
       }
-      
       return alerts;
     }
-
-    // update card nilainya
     function updateSensorCard(cardElement, statusElement, alerts, sensorType) {
       if (!cardElement || !statusElement) return;
       const sensorAlert = alerts.find(alert => alert.type === sensorType);
       if (sensorAlert) {
         cardElement.classList.remove('card-normal', 'card-warning');
         cardElement.classList.add('card-danger');
-        
-        // ini teksnya
         const statusText = sensorAlert.status === 'high' 
           ? `HIGH (${sensorAlert.threshold})` 
           : `LOW (${sensorAlert.threshold})`;
@@ -644,14 +586,11 @@
       }
     }
 
-    //notifikasi alert 
     function showAlertNotification(alerts) {
       if (!alerts || alerts.length === 0 || !alertsEnabled) return;
-      const now = Date.now(); //cooldown
+      const now = Date.now();
       if (now - lastAlertTime < alertCooldown) return;
       lastAlertTime = now;
-      
-      //Format pesan
       const message = alerts.map(alert => {
         const sensorNames = {
           temperature: 'Suhu',
@@ -670,8 +609,6 @@
           <span class="status-badge ${statusClass} text-sm">${alert.status === 'high' ? 'HIGH' : 'LOW'}: ${alert.threshold}${units[alert.type]}</span>
         </div>`;
       }).join('');
-
-      // notifikasi floating
       const alertNotification = document.getElementById('alertNotification');
       const alertMessage = document.getElementById('alertMessage');
       if (alertNotification && alertMessage) {
@@ -684,8 +621,6 @@
           alertNotification.style.display = 'none';
         }, 10000);
       }
-
-      // Tpop up template SweetAlert
       Swal.fire({
         icon: 'warning',
         title: 'Peringatan Sensor!',
@@ -694,24 +629,18 @@
         confirmButtonColor: '#ef4444',
         backdrop: true,
         allowOutsideClick: false,
-        timer: 10000 // 10 detik untuk auto-close SweetAlert
+        timer: 10000 
       });
-
-      // notifikasi telegram aktif
       if (telegramConfig && telegramConfig.enabled && telegramConfig.botToken && telegramConfig.chatId) {
         sendTelegramAlert(alerts);
       }
     }
-
-    // notifikasi telegram mulai kirim pesan
     async function sendTelegramAlert(alerts) {
       console.log('Checking Telegram config:', telegramConfig);
-      
       if (!telegramConfig.enabled) {
         console.log('Telegram notifications are disabled');
         return;
       }
-      
       if (!telegramConfig.botToken || !telegramConfig.chatId) {
         console.error('Missing Telegram configuration:', {
           botToken: !!telegramConfig.botToken,
@@ -774,8 +703,6 @@
         console.log('Telegram message sent successfully');
       } catch (error) {
         console.error('Gagal mengirim notifikasi Telegram:', error);
-        
-        // nampilin error kalau gagal adain notifikasi
         Swal.fire({
           icon: 'error',
           title: 'Gagal Mengirim Notifikasi',
@@ -784,8 +711,6 @@
         });
       }
     }
-
-    // status sensor diadain
     function checkAndUpdateSensorStatus(sensorData) {
       if (!sensorData) return;
       lastSensorValues = {
@@ -795,15 +720,12 @@
       };
       
       const alerts = checkSensorConditions(lastSensorValues);//cek data sensor terakhir
-      // Update card
       updateSensorCard(tempCard, tempStatus, alerts, 'temperature');
       updateSensorCard(humCard, humStatus, alerts, 'humidity');
       updateSensorCard(presCard, presStatus, alerts, 'pressure');
-      
-      //telegram dan alert terhubung
       if (alerts.length > 0 && alertsEnabled && !isInitialLoad) {
         showAlertNotification(alerts);
-        const now = Date.now(); //cooldown
+        const now = Date.now();
         if (now - lastAlertTime > alertCooldown) {
           lastAlertTime = now;
           sendTelegramAlert(alerts);
@@ -828,23 +750,16 @@
         }
         return;
       }
-
-      // dimapping ngurut data
       const dataArray = Object.entries(rawData)
         .map(([key, value]) => ({
           ...value,
           timestamp: value.timestamp || Number(key)
         }))
         .sort((a, b) => a.timestamp - b.timestamp);
-
-      // Ambil data 5 menit terakhir
       const fiveMinutesAgo = Date.now() / 1000 - 300;
       const recentData = dataArray.filter(d => d.timestamp >= fiveMinutesAgo);
-
-      // Siapkan array untuk chart
       const labels = [];
       const temps = [], hums = [], presses = [];
-
       recentData.forEach(d => {
         labels.push(formatTime(d.timestamp));
         temps.push(Number(d.suhu || d.temperature) || 0);
@@ -866,13 +781,9 @@
           pressure: pres
         });
       }
-
-      // Update chart individual
       updateChart(tempChart, labels, temps);
       updateChart(humChart, labels, hums);
       updateChart(pressChart, labels, presses);
-
-      // Update chart gabungan
       if(sensorChart) {
         sensorChart.data.labels = labels;
         sensorChart.data.datasets[0].data = temps;
@@ -892,24 +803,18 @@
       });
     }
 
-    // Inisialisasi saat DOM siap
     function initializeDashboard() {
       console.log('Inisialisasi dashboard...'); 
-      
-      // Inisialisasi chart
       tempChart = createChart("tempChart", "Suhu (°C)", "#059e8a", "rgba(5,158,138,0.2)");
       humChart = createChart("humChart", "Kelembaban (%)", "#00add6", "rgba(0,173,214,0.2)");
       pressChart = createChart("pressChart", "Tekanan (hPa)", "#e1e437", "rgba(225,228,55,0.2)");
       sensorChart = createCombinedChart("sensorChart");
       loadSettings();
-      //status sebelum ada data
       tempStatus.textContent = "Menunggu data...";
       humStatus.textContent = "Menunggu data...";
       presStatus.textContent = "Menunggu data...";
       console.log('Dashboard diinisialisasi'); 
     }
-
-    // Pastikan DOM sudah sepenuhnya dimuat sebelum inisialisasi
     if (document.readyState === 'complete' || document.readyState === 'interactive') {
       setTimeout(initializeDashboard, 1);
     } else {

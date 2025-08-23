@@ -5,20 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Riwayat Data</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%23059e8a' d='M272 96c-78.6 0-145.1 51.5-167.7 122.5c33.6-17 71.5-26.5 111.7-26.5h88c8.8 0 16 7.2 16 16s-7.2 16-16 16h-88c-16.6 0-32.7 1.9-48.3 5.4c-25.9 5.9-49.9 16.4-71.4 30.7c0 0 0 0 0 0C38.3 298.8 0 364.9 0 440v16c0 13.3 10.7 24 24 24s24-10.7 24-24v-16c0-48.7 20.7-92.5 53.8-123.2C121.6 392.3 190.3 448 272 448l1 0c132.1-.7 239-130.9 239-291.4c0-42.6-7.5-83.1-21.1-119.6c-2.6-6.9-12.7-6.6-16.2-.1C455.9 72.1 418.7 96 376 96L272 96z'/></svg>" />
-  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%23059e8a' d='M272 96c-78.6 0-145.1 51.5-167.7 122.5c33.6-17 71.5-26.5 111.7-26.5h88c8.8 0 16 7.2 16 16s-7.2 16-16 16h-88c-16.6 0-32.7 1.9-48.3 5.4c-25.9 5.9-49.9 16.4-71.4 30.7c0 0 0 0 0 0C38.3 298.8 0 364.9 0 440v16c0 13.3 10.7 24 24 24s24-10.7 24-24v-16c0-48.7 20.7-92.5 53.8-123.2C121.6 392.3 190.3 448 272 448l1 0c132.1-.7 239-130.9 239-291.4c0-42.6-7.5-83.1-21.1-119.6c-2.6-6.9-12.7-6.6-16.2-.1C455.9 72.1 418.7 96 376 96L272 96z'/></svg>" />
-
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
+    * {
+      font-family: 'Poppins', sans-serif;
+    }
     @media (max-width: 768px) {
       .sidebar {
         position: fixed;
@@ -30,11 +28,9 @@
         width: 80%;
         max-width: 300px;
       }
-      
       .sidebar.active {
         left: 0;
       }
-      
       .mobile-overlay {
         display: none;
         position: fixed;
@@ -45,39 +41,31 @@
         background: rgba(0, 0, 0, 0.5);
         z-index: 30;
       }
-      
       .mobile-overlay.active {
         display: block;
       }
-      
       .mobile-menu-btn {
         display: block !important;
       }
-      
       main {
         padding: 1rem !important;
       }
-
       .action-buttons {
         flex-direction: column;
         gap: 0.5rem;
       }
-
       .table-container {
         margin-top: 1rem;
       }
-
       .header-actions {
         flex-direction: column;
         gap: 1rem;
         align-items: stretch !important;
       }
-
       #timeFilter {
         width: 100%;
       }
     }
-
     .mobile-menu-btn {
       display: none;
       position: fixed;
@@ -89,27 +77,22 @@
       border-radius: 0.5rem;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
-
     .header-underline {
       border-bottom: 3px solid #059e8a;
       padding-bottom: 0.5rem;
       margin-bottom: 1.5rem;
     }
-
-    /* Table Styles */
     .table-container {
       background: white;
       border-radius: 0.5rem;
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
       overflow: hidden;
     }
-
     table {
       width: 100%;
       border-collapse: separate;
       border-spacing: 0;
     }
-
     th {
       background-color: #f3f4f6;
       font-weight: 600;
@@ -119,19 +102,15 @@
       text-align: center;
       border-bottom: 2px solid #e5e7eb;
     }
-
     td {
       padding: 1rem;
       text-align: center;
       vertical-align: middle;
       border-bottom: 1px solid #e5e7eb;
     }
-
     tr:hover {
       background-color: #f9fafb;
     }
-
-    /* Button Styles */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -141,35 +120,27 @@
       font-weight: 500;
       transition: all 0.2s;
     }
-
     .btn-primary {
       background-color: #059e8a;
       color: white;
     }
-
     .btn-primary:hover {
       background-color: #048271;
     }
-
     .btn-danger {
       background-color: #dc2626;
       color: white;
     }
-
     .btn-danger:hover {
       background-color: #b91c1c;
     }
-
     .btn-warning {
       background-color: #d97706;
       color: white;
     }
-
     .btn-warning:hover {
       background-color: #b45309;
     }
-
-    /* Filter Select Style */
     #timeFilter {
       border: 1px solid #e5e7eb;
       border-radius: 0.375rem;
@@ -181,8 +152,6 @@
       background-repeat: no-repeat;
       background-size: 1.5em 1.5em;
     }
-
-    /* Pagination Style */
     .pagination-container {
       background-color: white;
       padding: 1rem;
@@ -190,7 +159,6 @@
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
       margin-top: 1rem;
     }
-
     .pagination-button {
       padding: 0.5rem 1rem;
       border: 1px solid #e5e7eb;
@@ -200,35 +168,22 @@
       font-weight: 500;
       transition: all 0.2s;
     }
-
     .pagination-button:hover:not(:disabled) {
       background-color: #f3f4f6;
     }
-
     .pagination-button:disabled {
       opacity: 0.5;
       cursor: not-allowed;
     }
-
-    /* Apply Poppins font globally */
-    * {
-      font-family: 'Poppins', sans-serif;
-    }
   </style>
 </head>
 <body class="flex bg-[#AFE1AF] font-sans min-h-screen relative">
-  <!-- Mobile Menu-->
-  <button class="mobile-menu-btn" onclick="toggleSidebar()">
-    <i class="fas fa-bars text-xl"></i>
-  </button>
+  <button class="mobile-menu-btn" onclick="toggleSidebar()"><i class="fas fa-bars text-xl"></i></button>
   <div class="mobile-overlay" onclick="toggleSidebar()"></div>
-
-  <!-- Sidebar -->
   <aside class="sidebar bg-gradient-to-b from-emerald-800 to-brown-200 text-white w-64 min-h-screen">
     @include('layouts.sidebar')
   </aside>
 
-  <!-- Konten Utama -->
   <main class="flex-1 p-6 overflow-y-auto">
     <div class="bg-white rounded-lg shadow-md p-6 mb-6">
       <div class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-4 md:space-y-0 header-actions">
@@ -244,18 +199,12 @@
             <option value="1440">24 Jam Terakhir</option>
           </select>
           <div class="flex gap-2">
-            <button onclick="downloadPDF()" class="btn btn-primary flex-1 md:flex-none">
-              <i class="fas fa-download mr-2"></i> Download PDF
-            </button>
-            <button onclick="deleteAllData()" class="btn btn-danger flex-1 md:flex-none">
-              <i class="fas fa-trash mr-2"></i> Hapus Semua
-            </button>
+            <button onclick="downloadPDF()" class="btn btn-primary flex-1 md:flex-none"><i class="fas fa-download mr-2"></i> Download PDF</button>
+            <button onclick="deleteAllData()" class="btn btn-danger flex-1 md:flex-none"><i class="fas fa-trash mr-2"></i> Hapus Semua</button>
           </div>
         </div>
       </div>
     </div>
-
-    <!-- Table Section -->
     <div class="table-container">
       <div class="overflow-x-auto">
         <table>
@@ -272,8 +221,6 @@
         </table>
       </div>
     </div>
-
-    <!-- page sebelum setelah-->
     <div class="pagination-container flex items-center justify-between">
       <div class="flex items-center space-x-4">
         <button id="prevPage" onclick="changePage(-1)" class="pagination-button">
@@ -286,8 +233,6 @@
       </div>
     </div>
   </main>
-
-  <!-- tabel sensor -->
   <div id="editModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
     <div class="bg-white rounded-lg p-6 w-full max-w-md">
       <div class="flex justify-between items-center mb-4">
@@ -337,8 +282,7 @@
       appId: "{{ config('services.firebase.app_id') }}"
     };
     firebase.initializeApp(firebaseConfig);
-
-    const userId = "ZnZH95MCGvdfxPVwgfoRo3TdBnb2";
+    const userId = "0iY5iE17GQOxdQ524YFCEWRthwe2";
     const ref = firebase.database().ref(`SensorData/${userId}/readings`);
     const tbody = document.getElementById('tbody');
 
@@ -346,7 +290,7 @@
     let filteredData = [];
     let currentPage = 1;
     const rowsPerPage = 10;
-    let currentFilter = 'all'; // Menyimpan filter yang sedang aktif
+    let currentFilter = 'all';
 
     function closeModal() {
       document.getElementById("editModal").classList.add("hidden");
@@ -359,7 +303,6 @@
       document.getElementById("editPressure").value = data.pressure;
       document.getElementById("editModal").classList.remove("hidden");
     }
-
     document.getElementById("editForm").addEventListener("submit", function(e) {
       e.preventDefault();
       const key = document.getElementById("editKey").value;
@@ -388,8 +331,7 @@
 
     function applyTimeFilter() {
       const filterValue = document.getElementById('timeFilter').value;
-      currentFilter = filterValue; // Simpan filter yang dipilih
-      
+      currentFilter = filterValue;
       if (filterValue === 'all') {
         filteredData = [...allData];
         renderTable(1);
@@ -399,25 +341,21 @@
       const minutes = parseInt(filterValue);
       const now = new Date();
       const timeThreshold = now.getTime() - (minutes * 60 * 1000);
-      
       filteredData = allData.filter(({ data }) => {
         if (!data.timestamp) return false;
         
         const timestamp = data.timestamp * 1000;
         return timestamp >= timeThreshold;
       });
-      
       currentPage = 1;
       renderTable(1);
     }
 
     function renderTable(page = 1) {
       tbody.innerHTML = "";
-
       const start = (page - 1) * rowsPerPage;
       const end = start + rowsPerPage;
       const paginatedItems = filteredData.slice(start, end);
-
       if (paginatedItems.length === 0) {
         tbody.innerHTML = `
           <tr>
@@ -436,7 +374,6 @@
         const temperature = data.temperature ? parseFloat(data.temperature) : '-';
         const humidity = data.humidity ? parseFloat(data.humidity) : '-';
         const pressure = data.pressure ? parseFloat(data.pressure) : '-';
-
         return `
           <tr class="hover:bg-gray-50">
             <td class="w-1/4 px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
@@ -489,16 +426,13 @@
       if (isNaN(date)) {
         return '-';
       }
-
       const pad = (n) => n.toString().padStart(2, '0');
-
       const day = pad(date.getDate());
       const month = pad(date.getMonth() + 1);
       const year = date.getFullYear();
       const hours = pad(date.getHours());
       const minutes = pad(date.getMinutes());
       const seconds = pad(date.getSeconds());
-
       return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
     }
 
@@ -510,10 +444,8 @@
           data: childSnap.val()
         });
       });
+      allData.reverse(); 
 
-      allData.reverse(); // agar yang terbaru muncul pertama
-      
-      //filter yang aktif saat data update terbaru
       if (currentFilter === 'all') {
         filteredData = [...allData];
       } else {
@@ -529,10 +461,7 @@
       }
       renderTable(currentPage);
     });
-
     document.getElementById('timeFilter').addEventListener('change', applyTimeFilter);
-
-    // download data as PDF
     function downloadPDF() {
       const { jsPDF } = window.jspdf;
       const doc = new jsPDF();
@@ -541,8 +470,6 @@
       doc.setFontSize(10);
       const now = new Date();
       doc.text(`Dicetak pada: ${formatDate(now.getTime())}`, 14, 22);
-      
-      // info di pdf
       const filterValue = document.getElementById('timeFilter').value;
       let filterText = 'Semua Data';
       if (filterValue !== 'all') {
@@ -557,15 +484,12 @@
       }
       doc.text(`Filter: ${filterText}`, 14, 28);
 
-      // data tabel
       const tableData = filteredData.map(({ data }) => [
         data.timestamp ? formatDate(data.timestamp * 1000) : '-',
         data.temperature ? parseFloat(data.temperature).toFixed(2) : '-',
         data.humidity ? parseFloat(data.humidity).toFixed(2) : '-',
         data.pressure ? parseFloat(data.pressure).toFixed(2) : '-'
       ]);
-
-      // tabel
       doc.autoTable({
         head: [['Waktu', 'Suhu (°C)', 'Kelembaban (%)', 'Tekanan (hPa)']],
         body: tableData,
@@ -586,16 +510,12 @@
         },
         margin: { top: 35 }
       });
-
-      // simpan pdf
       doc.save(`riwayat_data_${formatDate(now.getTime()).replace(/[\/\s:]/g, '_')}.pdf`);
     }
 
-    // toggle sidebar
     function toggleSidebar() {
       const sidebar = document.querySelector('.sidebar');
       const overlay = document.querySelector('.mobile-overlay');
-      
       sidebar.classList.toggle('active');
       overlay.classList.toggle('active');
     }

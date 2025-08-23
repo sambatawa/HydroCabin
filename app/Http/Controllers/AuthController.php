@@ -22,7 +22,7 @@ class AuthController extends Controller
         }
         $factory = (new Factory)
             ->withServiceAccount($serviceAccount)
-            ->withDatabaseUri('https://hydrocabin-56d6f-default-rtdb.asia-southeast1.firebasedatabase.app');
+            ->withDatabaseUri(env('FIREBASE_DATABASE_URL'));
         $this->database = $factory->createDatabase();
     }
 
@@ -84,7 +84,6 @@ class AuthController extends Controller
             $users = $this->database->getReference('Users')->getValue();
             $user = null;
             $userId = null;
-
             foreach ($users as $id => $userData) {
                 if ($userData['email'] === $email) {
                     $user = $userData;
@@ -118,7 +117,6 @@ class AuthController extends Controller
                 'name' => $user['name'],
                 'role' => $user['role']
             ]);
-            
             return response()->json([
                 'success' => true,
                 'redirect' => route('dashboard')

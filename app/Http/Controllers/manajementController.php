@@ -21,7 +21,7 @@ class manajementController extends Controller
         }
         $factory = (new Factory)
             ->withServiceAccount($serviceAccount)
-            ->withDatabaseUri('https://hydrocabin-56d6f-default-rtdb.asia-southeast1.firebasedatabase.app');
+            ->withDatabaseUri(env('FIREBASE_DATABASE_URL'));
         $this->database = $factory->createDatabase();
     }
 
