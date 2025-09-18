@@ -1569,7 +1569,7 @@
                 <div>Keep your plants thriving with automated tracking of temperature, humidity, and pressure. Access data anytime through a remote web dashboard and get instant Telegram alerts when conditions go beyond the ideal range.</div>
                 <div class="footer-bottom">
                     <h3>Copyright</h3>
-                    <p>&copy; {{ date('Y') }} HydroCabin. Website project by Group 11.</p>
+                    <p>&copy; {{ date('Y') }} HydroCabin. Website project by sambatawa.com.</p>
                 </div>                    
             </div>
             <div class="footer-info-2">
