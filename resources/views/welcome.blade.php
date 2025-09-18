@@ -1513,16 +1513,16 @@
             <div class="contact-content">
                 <h2>Partner with <span><i class="fas fa-leaf"></i> HydroCabin</span></h2>
                 <div class="contact-sos">
-                    <div href="https://github.com/sambatawa" class="github">
-                        <a><i class="fa-brands fa-github"></i></a>
+                    <div class="github">
+                        <a href="https://github.com/sambatawa"><i class="fa-brands fa-github"></i></a>
                         <span>sambatawa</span>
                     </div>
-                    <div href="https://www.linkedin.com/in/inas-samara-taqia" class="linkedin">
-                        <a><i class="fa-brands fa-linkedin-in"></i></a>
+                    <div class="linkedin">
+                        <a href="https://www.linkedin.com/in/inas-samara-taqia"><i class="fa-brands fa-linkedin-in"></i></a>
                         <span>Inas Samara Taqia</span>
                     </div>
-                    <div href="https://www.instagram.com/sambatawa_/profilecard/?igsh=MTdzdmlpZmtsa3BrbQ==" class="instagram">
-                        <a><i class="fa-brands fa-instagram"></i></a>
+                    <div class="instagram">
+                        <a href="https://www.instagram.com/sambatawa_/profilecard/?igsh=MTdzdmlpZmtsa3BrbQ=="><i class="fa-brands fa-instagram"></i></a>
                         <span>@sambatawa_</span>
                     </div>
                 </div>
