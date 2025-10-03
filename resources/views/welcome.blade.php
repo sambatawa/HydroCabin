@@ -142,9 +142,9 @@
         }
         .contact{
             align-items: center;
-            gap: 10px;
             color: #FFFFFF;
             font-weight: 500;
+            margin-left: 60px;
             text-decoration: none;
             padding: 10px 40px;
             border-radius: 8px;
@@ -163,6 +163,19 @@
             background: linear-gradient(90deg, #059E8A 0%, #5CB684 100%);
             transform: translateY(-1px);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 30px;
+            color: var(--primary-color);
+        }
+        .menu-toggle a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .menu-toggle .toggle-close {
+            display: none;
         }
         .hero {
             height: 100vh;
@@ -774,7 +787,7 @@
             display:block;
         }
         .contact-content{
-            width: 60%;
+            width: 80%;
             padding: 0 150px;
             display: flex;
             flex-direction: column;
@@ -1115,11 +1128,7 @@
         .aqil {
             background-image: url('{{ asset("assets/aqil.jpg") }}');
         }
-        @media (max-width: 1080px) {
-            .team-slider-btn,
-            .slider-indicators {
-                display: none;
-            }
+        @media (max-width: 1200px){
             .hero {
                 height: auto;
             }
@@ -1133,7 +1142,6 @@
                 width: 100%;
                 margin: 0;
                 padding: 0 100px;
-
             }
             .hero-content h1, .hero-content h2, .hero-content p, .hero-content a {
                 margin: 5px;
@@ -1168,6 +1176,39 @@
             }
             .features-container {
                 padding: 70px 100px;
+            }
+        }
+        @media (max-width: 1080px) {
+            .team-slider-btn,
+            .slider-indicators {
+                display: none;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .nav-menu {
+                display: none;
+            }
+            .nav-menu {
+                position: absolute;
+                top: 100px;
+                right: 100px;
+                background: var(--white);
+                flex-direction: column;
+                width: 220px;
+                padding: 15px;
+                gap: 20px;
+                border-radius: 10px;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+                transform: translateX(120%);
+                transition: transform 0.3s ease;
+            }
+            .nav-menu.active {
+                display: flex;
+                transform: translateX(0);
+            }
+            .contact{
+                margin-left: 0;
             }
             .about {
                 flex-direction: column;
@@ -1277,6 +1318,93 @@
             .contact-content {
                 padding: 0 100px;
             }
+            .faq {
+                height: auto; 
+                padding: 30px 0 50px 0;
+            }
+            .faq-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+            }
+            .faq-content {
+                width: 90%;
+                border-radius: 20px;
+                padding: 40px 20px;
+            }
+            .contact-content {
+                width: 90%;
+                padding: 20px;
+            }
+            .form-row {
+                flex-direction: column;
+            }
+            .form-group {
+                width: 100%;
+            }
+            .contact-btn {
+                font-size: 18px;
+            }
+            .footer {
+                background: #BBE3DD;
+                width: 100vw;
+                height: auto;
+                padding: 50px 0;
+            }
+            .footer-content {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: flex-start;
+                padding: 50px 80px;
+                max-width: 1200px;
+                margin: 0 auto;
+                gap: 40px;
+            }
+        }
+        @media (max-width: 700px) {
+            .features-container {
+                padding: 50px 20px;
+            }
+            .hero-bg {
+                height: auto;
+            }
+            .hero-container{
+                justify-content: center;
+                padding-top: 50px;
+            }
+            .hero-content h1 {
+                font-size: 48px !important;
+            }
+            .market {
+                display: none;
+            }
+            .footer {
+                height: auto;
+                padding: 20px 0;
+            }
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+                padding: 30px 20px;
+                gap: 30px;
+                text-align: center;
+            }
+            .footer-info-1, .footer-info-2, .footer-info-3 {
+                width: 100%;
+                padding: 0;
+            }
+            .footer-info-1 {
+                padding-right: 0;
+            }
+            .info-content {
+                align-items: center;
+                gap: 8px;
+            }
+            .footer-bottom {
+                text-align: center;
+                padding-top: 12px;
+            }
         }
     </style>
 </head>
@@ -1288,15 +1416,17 @@
                 <i class="fas fa-leaf"></i>
                 HydroCabin
             </div>
+            <div class="menu-toggle" id="menu-toggle">
+                <a class="toggle-open"><i class="fas fa-bars"></i></a>
+                <a class="toggle-close"><i class="fas fa-xmark"></i></a>
+            </div>
             <div class="nav-menu">
                 <a href="#hero" class="nav-link active">Home</a>
                 <a href="#features" class="nav-link">Features</a>
                 <a href="#us" class="nav-link">Us</a>
                 <a href="#faq" class="nav-link">FAQ</a>
+                <a href="#faq" class="contact">Hubungi</a>
             </div>
-            <a href="#faq" class="contact">
-                Hubungi
-            </a>
         </nav>
     </header>
     <section id="hero" class="hero bg-[url('/assets/latar.jpg')] h-screen w-full bg-cover bg-center">
@@ -1330,18 +1460,18 @@
                     </div>
                 </div>
             </div>
-            <div class="market grid grid-cols-3 text-center">
-                <div class="user px-4 flex flex-row items-center justify-center gap-5 border-r-2 border-white">
-                    <h3 class="text-5xl font-extrabold">5+</h3>
-                    <p class="text-2xl lg:text-xl font-medium">Active User</p>
+            <div class="market grid grid-cols-3 text-center gap-3">
+                <div class="user flex flex-row items-center justify-center gap-3 border-r-2 border-white">
+                    <h3 class="text-3xl lg:text-5xl font-extrabold">5+</h3>
+                    <p class="text-lg lg:text-2xl font-medium">Active User</p>
                 </div>
-                <div class="user px-4 flex flex-row items-center justify-center gap-5 border-r-2 border-white">
-                    <h3 class="text-5xl font-extrabold">5+</h3>
-                    <p class="text-2xl lg:text-xl font-medium">Available User</p>
+                <div class="user flex flex-row items-center justify-center gap-3 border-r-2 border-white">
+                    <h3 class="text-3xl lg:text-5xl font-extrabold">5+</h3>
+                    <p class="text-lg lg:text-2xl font-medium">Available User</p>
                 </div>
-                <div class="user px-4 flex flex-row items-center justify-center gap-5">
-                    <h3 class="text-5xl font-extrabold">10+</h3>
-                    <p class="text-2xl lg:text-xl font-medium">Download</p>
+                <div class="user flex flex-row items-center justify-center gap-3">
+                    <h3 class="text-3xl lg:text-5xl font-extrabold">10+</h3>
+                    <p class="text-lg lg:text-2xl font-medium">Download</p>
                 </div>
             </div>
         </div>
@@ -1610,6 +1740,25 @@
                     });
                 }
             }
+            const menuToggle = document.getElementById("menu-toggle");
+            const navMenu = document.querySelector(".nav-menu");
+            const contactBtn = document.querySelector(".contact");
+            const toggleOpen = document.querySelector(".toggle-open");
+            const toggleClose = document.querySelector(".toggle-close");
+            menuToggle.addEventListener("click", () => {
+                navMenu.classList.toggle("active");
+                contactBtn.classList.toggle("active");
+                toggleOpen.style.display = navMenu.classList.contains("active") ? "none" : "inline-block";
+                toggleClose.style.display = navMenu.classList.contains("active") ? "inline-block" : "none";
+            });
+            document.querySelectorAll(".nav-link").forEach(link => {
+                link.addEventListener("click", () => {
+                    navMenu.classList.remove("active");
+                    contactBtn.classList.remove("active");
+                    toggleOpen.style.display = "inline-block";
+                    toggleClose.style.display = "none";
+                });
+            });
             function updateActiveState() {
                 const scrollPosition = window.scrollY + headerHeight + 100;
                 sections.forEach(section => {
